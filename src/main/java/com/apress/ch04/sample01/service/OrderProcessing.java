@@ -1,8 +1,10 @@
 package com.apress.ch04.sample01.service;
 
 import java.net.URI;
-import java.net.URL;
+import java.net.URLConnection;
 import java.util.UUID;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -63,11 +65,18 @@ public class OrderProcessing {
   @RequestMapping(value = "/ping/{msg}", method = RequestMethod.GET)
   public ResponseEntity<?> ping(@PathVariable("msg") String message) {
     String outMsg = null;
+    StringBuilder sb = new StringBuilder();
     try {
-      URL wsdl = new URL("http://10.28.43.16:26011/integration/CRMB2BService?wsdl");
-      outMsg = wsdl.getContent().toString();
+      URLConnection conn = new URL(url).openConnection();
+      try (BufferedReader is = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+        String line;
+        while ((line = is.readLine()) != null) {
+          sb.append(line + "\n");
+        }
+      }
+      outMsg = sb.toString();
     } catch (Exception e) {
-      outMsg = e.getMessage();
+      outMsg = e.getMessage());
     }
     return ResponseEntity.ok("{'ping' : '" + outMsg + "'}");
   }

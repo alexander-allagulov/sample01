@@ -1,6 +1,7 @@
 package com.apress.ch04.sample01.service;
 
 import java.net.URI;
+import java.net.URL;
 import java.util.UUID;
 
 import org.springframework.http.HttpStatus;
@@ -61,8 +62,9 @@ public class OrderProcessing {
 
   @RequestMapping(value = "/ping/{msg}", method = RequestMethod.GET)
   public ResponseEntity<?> ping(@PathVariable("msg") String message) {
-  //public ResponseEntity<?> checkOrderStatus(@PathVariable("msg") String message) {
-    return ResponseEntity.ok("{'ping' : '" + message + "'}");
+    URL wsdl = new URL("http://10.28.43.16:26011/integration/CRMB2BService?wsdl");
+    Object wsdlContent = wsdl.getContent();
+    return ResponseEntity.ok("{'ping' : '" + wsdlContent + "'}");
   }
 
 }

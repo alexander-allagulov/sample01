@@ -73,6 +73,7 @@ public class OrderProcessing {
       try (BufferedReader is = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
         String line;
         while ((line = is.readLine()) != null) {
+          System.out.println(line);
           sb.append(line + "\n");
         }
       }

@@ -1,6 +1,7 @@
 package com.apress.ch04.sample01.service;
 
 import java.net.URI;
+import java.net.URL;
 import java.net.URLConnection;
 import java.util.UUID;
 import java.io.BufferedReader;
@@ -66,6 +67,7 @@ public class OrderProcessing {
   public ResponseEntity<?> ping(@PathVariable("msg") String message) {
     String outMsg = null;
     StringBuilder sb = new StringBuilder();
+    String url = "http://10.28.43.16:26011/integration/CRMB2BService?wsdl";
     try {
       URLConnection conn = new URL(url).openConnection();
       try (BufferedReader is = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
@@ -76,7 +78,7 @@ public class OrderProcessing {
       }
       outMsg = sb.toString();
     } catch (Exception e) {
-      outMsg = e.getMessage());
+      outMsg = e.getMessage();
     }
     return ResponseEntity.ok("{'ping' : '" + outMsg + "'}");
   }

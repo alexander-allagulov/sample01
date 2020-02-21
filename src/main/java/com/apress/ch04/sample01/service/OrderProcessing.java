@@ -67,6 +67,7 @@ public class OrderProcessing {
   public ResponseEntity<?> ping(@PathVariable("msg") String message) {
     String outMsg = null;
     StringBuilder sb = new StringBuilder();
+
     String url = "http://10.28.43.16:26011/integration/CRMB2BService?wsdl";
     try {
       URLConnection conn = new URL(url).openConnection();

@@ -81,7 +81,8 @@ public class OrderProcessing {
     } catch (Exception e) {
       outMsg = e.getMessage();
     }
-    return ResponseEntity.ok("{'ping' : '" + outMsg + "'}");
+    //return ResponseEntity.ok("{'ping' : '" + outMsg + "'}");
+    return ResponseEntity.ok(outMsg);
   }
 
 }

@@ -76,14 +76,15 @@ public class OrderProcessing {
         while ((line = is.readLine()) != null) {
           System.out.println(line);
           sb.append(line + "\n");
+          break;
         }
       }
       outMsg = sb.toString();
     } catch (Exception e) {
       outMsg = e.getMessage();
     }
-    //return ResponseEntity.ok("{'ping' : '" + outMsg + "'}");
-    return ResponseEntity.ok(outMsg);
+    return ResponseEntity.ok("{'ping' : '" + outMsg + "'}");
+    //return ResponseEntity.ok(outMsg);
   }
 
 }

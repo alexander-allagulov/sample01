@@ -62,9 +62,14 @@ public class OrderProcessing {
 
   @RequestMapping(value = "/ping/{msg}", method = RequestMethod.GET)
   public ResponseEntity<?> ping(@PathVariable("msg") String message) {
-    URL wsdl = new URL("http://10.28.43.16:26011/integration/CRMB2BService?wsdl");
-    Object wsdlContent = wsdl.getContent();
-    return ResponseEntity.ok("{'ping' : '" + wsdlContent + "'}");
+    String outMsg = null;
+    try {
+      URL wsdl = new URL("http://10.28.43.16:26011/integration/CRMB2BService?wsdl");
+      outMsg = wsdl.getContent().toString();
+    } catch (Exception e) {
+      outMsg = e.getMessage();
+    }
+    return ResponseEntity.ok("{'ping' : '" + outMsg + "'}");
   }
 
 }

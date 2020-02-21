@@ -60,7 +60,7 @@ public class OrderProcessing {
   }
 
   @RequestMapping(value = "/ping/{msg}", method = RequestMethod.GET)
-  public ResponseEntity<?> checkOrderStatus(@PathVariable("msg") String message) {
+  public ResponseEntity<?> ping(@PathVariable("msg") String message) {
   //public ResponseEntity<?> checkOrderStatus(@PathVariable("msg") String message) {
     return ResponseEntity.ok("{'ping' : '" + message + "'}");
   }

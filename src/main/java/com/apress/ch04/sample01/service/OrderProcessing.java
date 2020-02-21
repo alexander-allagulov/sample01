@@ -58,4 +58,11 @@ public class OrderProcessing {
 
     return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
   }
+
+  @RequestMapping(value = "/ping/{msg}", method = RequestMethod.GET)
+  public ResponseEntity<?> checkOrderStatus(@PathVariable("msg") String message) {
+  //public ResponseEntity<?> checkOrderStatus(@PathVariable("msg") String message) {
+    return ResponseEntity.ok("{'ping' : '" + message + "'}");
+  }
+
 }

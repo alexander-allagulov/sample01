@@ -80,6 +80,7 @@ public class OrderProcessing {
         }
       }
       outMsg = sb.toString();
+      System.out.println("outMsg: " + outMsg);
     } catch (Exception e) {
       outMsg = e.getMessage();
     }
